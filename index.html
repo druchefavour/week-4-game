@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crystal Collector</title>
+	<!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+
+</body>
+<!--Keep this div empty and fill it dynamically-->
+<div class="jumbotron">
+  <h1 class="text-center">Generate Target Random Numbers</h1>
+    <div class="text-center">
+    <h1>Number to Guess: <span id="numberToGuess"></span></h1>
+    <h2 id="result"></h2>
+
+<!-- Here we have our button with id randomButton -->
+<button id="randomButton" class="btn-primary.active:hover btn-lg"><h1><span class="glyphicon glyphicon-question-sign"></span></h1></button>
+
+<div id="crystals">
+</div>
+
+<h1>Total Value: <span id="crystalValue"></span></h1>
+<div>
+<h2>Wins: <span id="Wins"></span></h2>
+<h2>Losses: <span id="Losses"></span></h2>
+</div>
+<div>
+	<button class="btn btn-primary btn-lg resetButton"><span class="reset"></span>Play Again</button>
+</div>
+<!-- JAVASCRIPT -->
+<!-- =================================================== -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script></script>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+</html>
