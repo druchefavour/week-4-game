@@ -1,0 +1,13 @@
+.background
+	{
+		background-color: #66CDAA;
+	}
+	.floating-box {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin-left: 10px;
+    padding: 10px;
+    background: #00FFFF;
+    border: 3px solid #73AD21; 
+}
