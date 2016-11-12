@@ -5,31 +5,89 @@
 	<!-- Bootstrap File -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
+<header><h1><span class="label label-warning">Crystal Collectors</span></h1></header>
 </head>
-<body>
+<br>
+<body class="background">
+<style>
+	.background
+	{
+		background-color: #66CDAA;
+	}
+	.floating-box {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin-left: 10px;
+    padding: 10px;
+    background: #00FFFF;
+    border: 3px solid #73AD21; 
+}
 
-</body>
+</style>
 <!--Keep this div empty and fill it dynamically-->
-<div class="jumbotron">
-  <h1 class="text-center">Generate Target Random Numbers</h1>
-    <div class="text-center">
-    <h1>Number to Guess: <span id="numberToGuess"></span></h1>
-    <h2 id="result"></h2>
-
-<!-- Here we have our button with id randomButton -->
-<button id="randomButton" class="btn-primary.active:hover btn-lg"><h1><span class="glyphicon glyphicon-question-sign"></span></h1></button>
-
-<div id="crystals">
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-sm-8" style="background-color:#FFDEAD;"><br>
+    		<h3>Instructions</h3>
+    		<div class="text-success"><p>Start the game by clicking the Generate a random number button to obtain a target number to guess</p>
+    		<p>There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your total score</p>
+    		<p>You win the game by matching your total score to the target number; You lose the game if your total score goes above the target number</p>
+    		<p>The value of each crystal is hidden from you until you click on Each time the game starts, the game will change the values of each crystal</p><br>
+    		</div>
+    	</div>
+    	<div class="col-sm-4"></div>
+    </div>
+    <br>
+    <div class="row">
+    	<div class="col-sm-4" style="background-color:green;"><br>
+    		<div class="lead">
+  				<div class="text-center">
+    				<h1 class="strong small" style="color:white;">Number to Guess: <span id="numberToGuess"></span></h1>
+    				<h2 id="result"></h2>
+						<!-- Here we have our button with id randomButton -->
+					<button id="randomButton" class="btn btn-primary.focus:hover btn-lg"><span class="glyphicon glyphicon-star"></span>Random</button>
+				</div>
+			</div> 
+		</div>
+		<div class="col-sm-8">
+			<div class="floating-box">
+				<h3>Wins: <span id="Wins"></span></h3>
+				<h3>Losses: <span id="Losses"></span></h3>
+			</div>
+		</div>
+    	</div>
+    	<br>
+    <div class="row">
+    	<div class="col-sm-8"><br>
+    		<div id="crystals">
+		</div>
+		<div class="col-sm-4"></div>
+    	</div>
+    </div>
+  <hr>
+  <div class="row">
+    	<div class="col-sm-4" style="background-color:#7284b7;"">
+    		<h3>Total Value:</h3>
+		</div>
+		<div class="col-sm-8"></div>
+    	</div>
+    </div>
+<br>
+<div class="row">
+    	<div class="col-sm-4" style="background-color:#7284b7;">
+    		<br><h1><span id="crystalValue"></span></h1><br<br><br><br><br>>
+		</div>
+		<div class="col-sm-8"></div>
+    	</div>
+    </div>
 </div>
-
-<h1>Total Value: <span id="crystalValue"></span></h1>
-<div>
-<h2>Wins: <span id="Wins"></span></h2>
-<h2>Losses: <span id="Losses"></span></h2>
-</div>
+<br>
 <div>
 	<button class="btn btn-primary btn-lg resetButton"><span class="reset"></span>Play Again</button>
+</div>
 </div>
 <!-- JAVASCRIPT -->
 <!-- =================================================== -->

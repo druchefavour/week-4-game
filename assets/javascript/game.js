@@ -23,19 +23,22 @@ var numberOptions = Array(4).fill(0).map(makeRandoms);
 // Create a for loop to create crystals for every numberOption.
 for (var i = 0; i < numberOptions.length; i++){
 	//for each iteration, create an imageCrystal
+	
 	var imageCrystal = $("<img>");
-	//First each crystal will be given the class .img-circle allowing the CSS to take effect
+		//First each crystal will be given the class .img-circle allowing the CSS to take effect
 	imageCrystal.addClass("img-circle");
 	//Each imageCrystal will be given a src link to the crystal image
-	imageCrystal.attr("src", "assets/images/crystal_d.png"); 
-	
+	imageCrystal.attr("src", "assets/images/crystal.png");
+
 	//Each imageCrystal will be given a data attribute called data-crystalvalue.
 	//This data attribute will be set equal to the array value
 	imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+	
 	//Each crystal image (with all its classes and attributes) will get added to the page.
 	$("#crystals").append(imageCrystal);
 }
-// This time, our click event applies to every single crystal on the page. Not just one
+	
+	// This time, our click event applies to every single crystal on the page. Not just one
 $(".img-circle").on("click", function(){
 	//Determining the crystal's value required us to extract the value from the data attribute.
 	//Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
