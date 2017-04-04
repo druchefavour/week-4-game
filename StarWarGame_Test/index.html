@@ -1,0 +1,223 @@
+<!-- html page created-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- Create Title -->
+    <title>Star Wars RPG!</title>
+  	 <!-- Include the css reset file-->
+     <link rel="stylesheet" type="text/css" href="css/reset.css">
+  	 <!-- Include the Bootstrap files-->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+     <!-- Include the JQuery files-->
+     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <!-- Create title header : move to the right -->   
+     <header>
+     <h1><span class="page-header" style="margin-left: 700px">Star Wars RPG!</span></h1>
+     </header>
+  </head>
+  <!--upload starwar background image-->
+  <body background="image/star_war.jpg" style = "width: 100%; height: 100%">
+   
+    <!--Write Character (Player Title) -->
+    <div id="Character"><h2><span>Your Character</span></h2></div>
+    <!--upload images of star war characters and style them-->
+    <div id="images">
+    	<div><img src="image/kenobi.jpg" alt="" class="img to-move" style="position:absolute; top:120px; left: 0px; z-index: -20; height: 120px; width:200px;padding:10px; border: 5px solid green;"/></div>
+		  <div><img src="image/luke_skywalker.jpg" alt="" class="img to-move_1" style="position:absolute; top:120px; left: 220px; z-index: -20; height: 120px; width:200px; padding:10px;  border: 5px solid green;"/></div>
+		  <div><img src="image/sidious.jpg" alt="" class="img to-move_2" style="position:absolute; top:120px; left: 440px; z-index: -20; height: 120px; width:200px; padding:10px; border: 5px solid green"/></div>
+		  <div><img src="image/maul.jpg" alt="" class="img to-move_3" style="position:absolute; top:120px; left: 660px; z-index: -20; height: 120px; width:200px; padding:10px;  border: 5px solid green"/></div-->
+		<!-- Create Enemies to attack ID  -->
+		<div id="Enemies" style="position:absolute; top:240px"><h2><span>Enemies Available To Attack</span></h2></div>
+
+    <!-- Create Fight Section ID  -->
+    <div id="Fight" style="position:absolute; top:400px">
+      <h2><span>Fight Section</span></h2>
+		  <!-- Here we have our attack button with id Attack -->
+		  <button id="Attack" class="btn btn-primary.focus:hover btn-lg"><span class="glyphicon glyphicon-star"></span>Attack</button>
+      <h2><span>Defender</span></h2>
+    </div>   	
+		<!-- Comment on the battle -->
+    <!-- ID for writing character actions -->
+    <div id="comments" style="position:absolute; top:340px"></div>  	
+			<p id="playerLife"></p>
+      <p id="defenderLife"></p>
+			<h1><span id="HpValue"></span>
+		</div>	
+ 
+
+ 	<script type="text/javascript">
+ 	$(document).ready(function(){
+
+  
+  // Define variables
+  var imageValues = [];
+  var damageValues = [];
+  
+  // Move enemies card to the enemies available section
+ 	$(".to-move").on("click", function() {
+  $(".to-move_1").animate({ top: "+=180px" }, "normal");
+  $(".to-move_1").animate({ left: "-=220px" }, "normal");
+  $(".to-move_2").animate({ top: "+=180px" }, "normal");
+  $(".to-move_2").animate({ left: "-=220px" }, "normal");
+  $(".to-move_3").animate({ top: "+=180px" }, "normal");
+  $(".to-move_3").animate({ left: "-=220px" }, "normal");
+
+  // Generate numbers between 19 and 120.
+  // We need var name = Math.floor(Math.random() *((y-x)+1)+x).
+  // x = 19, y = 120.
+  var makeLifes = function(){
+  return Math.floor(Math.random()*102)+19;
+  }
+  var numberOptions = Array(4).fill(0).map(makeLifes);
+  var imagesArray = ["image/kenobi.jpg", "image/luke_skywalker.jpg", "image/sidious.jpg", "image/maul.jpg"];
+  // Assign value to characters
+  imagesArray[0] = numberOptions[0];
+  imagesArray[1] = numberOptions[1];
+  imagesArray[2] = numberOptions[2];
+  imagesArray[3] = numberOptions[3];
+  imageValues.push(numberOptions);
+
+  var attackOptions = function(){
+  return Math.floor(Math.random()*25)+1;
+  }
+  var damage = Array(4).fill(0).map(attackOptions);
+  for (i = 0; i < damage.length; i++){
+  damageValues.push(damage[i]);
+  }
+  });
+  
+  // Select one enemy card to the defender section and move the other cards
+  $(".to-move_1").on("click", function() {
+  $(".to-move_1").animate({ top: "+=280px" }, "normal");
+  $(".to-move_2").animate({ left: "-=220px" }, "normal");
+  $(".to-move_3").animate({ left: "-=220px" }, "normal");
+  });
+
+  $(".to-move_2").on("click", function() {
+  $(".to-move_2").animate({ top: "+=280px" }, "normal");
+  $(".to-move_2").animate({ left: "-=220px" }, "normal");
+  $(".to-move_3").animate({ left: "-=220px" }, "normal");
+  });
+
+  $(".to-move_3").on("click", function() {
+  $(".to-move_3").animate({ top: "+=280px" }, "normal");
+  $(".to-move_3").animate({ left: "-=440px" }, "normal");
+  });
+  var HpValue0;
+  var HpValue1;
+  var HpValue2;
+  var HpValue3;
+  
+  alert(damageValues);
+  // Initiate an attack for defender 1
+  $("#Attack").on("click", function() {
+   HpValue0 = imageValues[0] - damageValues[1]
+   HpValue1 = imageValues[1] - damageValues[0]
+   $("#playerLife").text("You attacked Defender 1 for  " + damageValues[0] + 'damages');
+   $("#defenderLife").text("Defender 1 attacked back for  " + damageValues[1] + 'damages');
+   HpValue0++;
+   HpValue1++;
+  });
+  
+  });
+  
+
+    //Generate a new random number between 19 and 120.
+    // We need var name = Math.floor(Math.random() *((y-x)+1)+x).
+    // x = 19, y = 120.
+   // var makeLifes = function(){
+	//return Math.floor(Math.random()*102)+19;
+    //$("#playerLife").text("Your Character New Life " + playerLife);
+  //  };
+
+  //  var numberOptions = Array(4).fill(0).map(makeLifes);
+
+    // Create a for loop to create crystals for every numberOption.
+	//for (var i = 0; i < numberOptions.length; i++){ 
+	//for each iteration, create an imgs
+//	var imagesArray = $("#result").find("img").map(function()
+//	{
+//	return $(this).attr("src");
+//}).get();
+	
+//	for (j=0; j<imagesArray .length; j++) {
+		
+ // 	var t = "<img src='" + imagesArray [j] + "'/>";
+//	alert(t);
+
+	//First each Star War Player will be given the its allowing the CSS to take effect
+	//imagesArray.addClass("to-move");
+
+	//imagesArray.attr("src", "image/kenobi.jpg", "image/luke_skywalker.jpg", "image/sidious.jpg", "image/maul.jpg");
+    
+  	//Each imgs will be given a data attribute called data-starwarvalue.
+	//This data attribute will be set equal to the array value
+	//t.attr("starwarvalue", numberOptions[i]);
+
+    // Create a string which will hold the life of player (a number)
+ 	// Click the image to gain life
+ 	//$("#lifeButton").on("click", function() {
+	//var imgs = $("div img");
+	//console.log(t);
+  //};
+
+//	var imageStarWar = Array(4).fill(0).map("")
+//	var imageStarWar = $("<img>");
+		//First the star war player will be given the class to-move allowing the CSS to take effect
+//	imageStarWar[0].addClass("to-move");
+	//The imageStarWar0 will be given a src link to the star war image
+//	imageStarWar[0].attr("src", "image/kenobi.jpg");
+
+	//Each imageStarWar will be given a data attribute called data-starwarvalue.
+	//This data attribute will be set equal to the array value
+//	imageStarWar[0].attr("data-starwarvalue", numberOptions[0]);
+ 	// click function for the characters. 
+ 	// Each character is chosen for the game by clicking on it.
+ 	// Move the chosen character to its battle-ready position.
+ 	//Each crystal image (with all its classes and attributes) will get added to the page.
+//	$("#Starwar").append(imageStarWar);
+//	alert(num);
+
+//	var imageStarWar1 = $("img");
+ //   imageStarWar1.addClass("to-move_1");
+ //   imageStarWar1.attr("src", "image/luke_skywalker.jpg");
+ //   imageStarWar1.attr("data-starwarvalue", numberOptions[1]);
+ //   alert(numberOptions[1]);
+ //   $("#Starwar").append(imageStarWar1);
+	
+ 	// click function for second image		
+  //  $(".to-move_1").on("click", function() {
+   // $(".to-move_1").animate({ top: "+=300px" }, "normal");
+    //$(".to-move_1").animate({ left: "-=220px" }, "normal");
+    //var playerValue = ($(this).data("num"));
+   // counter += num;
+   // $("#playerValue").text(counter);
+    // All of the same game win-lose logic applies. So the rest remains unchanged.
+   // alert("New score: " + counter);
+	//});//
+
+	
+    // click function for third image
+  //  $(".to-move_2").on("click", function() {
+   // $(".to-move_2").animate({ top: "+=300px" }, "normal");
+   // $(".to-move_2").animate({ left: "-=440px" }, "normal");
+   //   });
+  
+    // click function for fourth image
+ //   $(".to-move_3").on("click", function() {
+  //  $(".to-move_3").animate({ top: "+=300px" }, "normal");
+  //  $(".to-move_3").animate({ left: "-=660px" }, "normal");
+ //     });
+//});
+// 	});
+    
+
+ 
+
+    </script>
+  </body>
+</html> 

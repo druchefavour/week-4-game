@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="results">
+    	<div><img src="image/kenobi.jpg" alt="" class="img to-move" style="position:absolute; top:60px; left: 140px; z-index: -20; height: 100px; width:200px; border-color: green; border-width: 5px"/></div>
+		<div><img src="image/luke_skywalker.jpg" alt="" class="img to-move_1" style="position:absolute; top:60px; left: 360px; z-index: -20; height: 100px; width:200px; border-color: green; border-width: 5px"/></div>
+		<div><img src="image/sidious.jpg" alt="" class="img to-move_2" style="position:absolute; top:60px; left: 580px; z-index: -20; height: 100px; width:200px; border-color: green; border-width: 5px"/></div>
+		<div><img src="image/maul.jpg" alt="" class="img to-move_3" style="position:absolute; top:60px; left: 800px; z-index: -20; height: 100px; width:200px; border-color: green; border-width: 5px"/></div>
+		</div>
+
+<script type="text/javascript">
+var counter = 0;
+//Create multiple crystals each with their own unique value.
+// Expand our array to include four options (the four options would be numbers between 1 and 12 selected randomly)
+
+var makeRandoms = function(){
+	return Math.floor(Math.random()*120)+1;
+}
+var numberOptions = Array(4).fill(0).map(makeRandoms);
+var arr = [ "image/kenobi.jpg", "image/luke_skywalker.jpg", "image/sidious.jpg", "image/maul.jpg"]
+
+arr[0] = numberOptions[0];
+arr[1] = numberOptions[1];
+arr[2] = numberOptions[2];
+arr[3] = numberOptions[3];
+console.log(arr);
+
+// Create a for loop to create crystals for every numberOption.
+
+	//for each iteration, create an imageCrystal
+	
+//	var imageArray = $("<img>");
+		//First each crystal will be given the class .img-circle allowing the CSS to take effect
+//	imageArray.addClass("img-circle");
+	//Each imageCrystal will be given a src link to the crystal image
+//imageArray.attr("src", "image/kenobi.jpg", "image/luke_skywalker.jpg", "image/sidious.jpg", "image/maul.jpg");
+
+	//Each imageCrystal will be given a data attribute called data-crystalvalue.
+	//This data attribute will be set equal to the array value
+	
+	//console.log()
+	//Each crystal image (with all its classes and attributes) will get added to the page.
+	// This time, our click event applies to every single crystal on the page. Not just one
+$(".to-move").on("click", function(){
+	var playerLife = arr[0];
+	alert(playerLife);
+	//Determining the crystal's value required us to extract the value from the data attribute.
+	//Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+	// Using the .data("crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+    // (It automatically strips the "data-" part).
+  })
+$(".to-move_1").on("click", function(){
+	var playerLife = arr[0];
+	var defenderLife = arr[1];
+	var attack = playerLife - defenderLife;
+	var counter = 0;
+	counter =+ attack;
+	alert(attack);
+	//Determining the crystal's value required us to extract the value from the data attribute.
+	//Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+	// Using the .data("crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+    // (It automatically strips the "data-" part).
+  })
+
+
+
+</script>
+</body>
+</html>
